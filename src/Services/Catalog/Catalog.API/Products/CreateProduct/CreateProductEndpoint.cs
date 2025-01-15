@@ -1,8 +1,4 @@
-﻿using Carter;
-using MediatR;
-using Mapster;
-
-namespace Catalog.API.Products.CreateProduct;
+﻿namespace Catalog.API.Products.CreateProduct;
 
 public record CreateProductRequest(string Name, List<string> Category, string Description, string ImageFile, decimal Price);
 
@@ -26,8 +22,8 @@ public class CreateProductEndpoint : ICarterModule
 
                 return Results.Created($"/products/{response.Id}", response);
             })
-            // These definitions are only to be used for clarification
-            // Here, the router name is different from url, the name here can be identified throughout the application
+            // These definitions are only to be used for clarification, not for functionality
+            // Here, the router name is different from url, the former can be identified throughout the application
             .WithName("CreateProduct")
             .Produces<CreateProductResponse>(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status400BadRequest)
